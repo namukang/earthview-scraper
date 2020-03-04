@@ -33,6 +33,7 @@ def scrape():
 
 if __name__ == "__main__":
     with open('earthview.json', 'w+') as f:
+        f.write('[')
         while True:
             if url in seen_photos:
                 break
@@ -40,4 +41,6 @@ if __name__ == "__main__":
             print(count)
             print(photo_json)
             f.write(photo_json)
+            f.write(',')  # remove last comma before using file for proper JSON
             count += 1
+        f.write(']')
